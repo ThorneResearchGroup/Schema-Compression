@@ -15,11 +15,18 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub</name>
-            <url>https://maven.pkg.github.com/ThorneResearchGroup/Schema-Compressor</url>
+            <id>TRG</id>
+            <url>https://maven.tresearchgroup.tech/releases</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>TRGRepo-releases</id>
+            <name>The TRG repository</name>
+            <url>https://maven.tresearchgroup.tech/releases</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
