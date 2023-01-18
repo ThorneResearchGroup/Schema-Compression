@@ -13,21 +13,6 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>TRG</id>
-            <url>https://maven.tresearchgroup.tech/releases</url>
-        </repository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>TRGRepo-releases</id>
-            <name>The TRG repository</name>
-            <url>https://maven.tresearchgroup.tech/releases</url>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -50,12 +35,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation= "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>tech.tresearchgroup.schemas.compression.Main</mainClass>
-                                </transformer>
-                            </transformers>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
