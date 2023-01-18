@@ -23,14 +23,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
       run: mvn package
 
     - name: Publish to GitHub Packages Apache Maven
       run: |
-        echo "<settings><servers><server><id>TRG</id><username>${repo.login}</username><password>\${repo.pwd}</password></server></servers></settings>" > ~/.m2/settings.xml
-        mvn -Drepo.login=${{secrets.MAVENUSERNAME}} -Drepo.pwd=${{secrets.MAVENPASSWORD}} deploy
+        echo "<settings><servers><server><id>TRG</id><username>${secrets.MAVENUSERNAME}</username><password>\${secrets.MAVENUSERNAME}</password></server></servers></settings>" > ~/.m2/settings.xml
+        mvn deploy
       env:
         GITHUB_TOKEN: ${{ github.token }}
