@@ -27,7 +27,7 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: |
-        echo $MAVENFILE > ~/.m2/settings.xml
+        echo "$MAVENFILE" > ~/.m2/settings.xml
         cat ~/.m2/settings.xml
         mvn deploy
       env:
