@@ -4,7 +4,7 @@
 name: Maven Package
 
 on:
-  release:
+  push:
     types: [created]
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: |
-        echo "<settings><servers><server><id>TRG</id><username>${secrets.MAVENUSERNAME}</username><password>\${secrets.MAVENUSERNAME}</password></server></servers></settings>" > ~/.m2/settings.xml
+        echo "<settings><servers><server><id>TRG</id><username>${{secrets.MAVENUSERNAME}}</username><password>\${{secrets.MAVENUSERNAME}}</password></server></servers></settings>" > ~/.m2/settings.xml
         mvn deploy
       env:
         GITHUB_TOKEN: ${{ github.token }}
