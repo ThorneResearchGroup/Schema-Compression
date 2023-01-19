@@ -3,7 +3,9 @@
 
 name: Maven Package
 
-on: push
+on:
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -22,10 +24,7 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
 
-    - name: Build with Maven
-      run: mvn package
-
-    - name: Publish to GitHub Packages Apache Maven
+    - name: Publish to TRG Maven repo
       run: |
         echo "<settings><servers><server><id>TRG</id><username>\${env.MAVENUSERNAME}</username><password>\${env.MAVENPASSWORD}</password></server></servers></settings>" > ~/.m2/settings.xml
         mvn deploy
